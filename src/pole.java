@@ -79,15 +79,15 @@ public class pole {
 		       // ѕопытка загрузки всех изображений дл€ игры
 		       try
 		       {
-		      	 color1 = ImageIO.read(new File(".//images//1.png"));
-		      	 color2 = ImageIO.read(new File(".//images//2.png"));
-		      	 color3 = ImageIO.read(new File(".//images//3.png"));
-		      	 color4 = ImageIO.read(new File(".//images//4.png"));
-		      	 color5 = ImageIO.read(new File(".//images//5.png"));
-		      	 color6 = ImageIO.read(new File(".//images//6.png"));
-		      	 color7 = ImageIO.read(new File(".//images//7.png"));
-		      	 endg = ImageIO.read(new File(".//images//endg.png")); 
-		      	 fon = ImageIO.read(new File(".//images//fon.png"));
+		      	 color1 = ImageIO.read(this.getClass().getResource("1.png"));
+		      	 color2 = ImageIO.read(this.getClass().getResource("2.png"));
+		      	 color3 = ImageIO.read(this.getClass().getResource("3.png"));
+		      	 color4 = ImageIO.read(this.getClass().getResource("4.png"));
+		      	 color5 = ImageIO.read(this.getClass().getResource("5.png"));
+		      	 color6 = ImageIO.read(this.getClass().getResource("6.png"));
+		      	 color7 = ImageIO.read(this.getClass().getResource("7.png"));
+		      	 endg = ImageIO.read(this.getClass().getResource("endg.png")); 
+		      	 fon = ImageIO.read(this.getClass().getResource("fon.png"));
 		       }
 		       catch (Exception ex) {}
 		       
