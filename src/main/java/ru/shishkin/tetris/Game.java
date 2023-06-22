@@ -3,10 +3,9 @@ package ru.shishkin.tetris;
 public class Game {
     public int[][] mas = new int[30][20];
     public int napr = 0, fnapr;
-    private int gX, gY;
     public int kol, kol_pol;
     public boolean endg;
-    boolean fprov = true;
+    public boolean fprov = true;
     public int color = 0;
     public int[][] mass;
     public int[][] mas1 = {{1}, {1}, {1}, {1}, {1}};
@@ -18,6 +17,8 @@ public class Game {
     public int[][] mas7 = {{1, 0}, {1, 1}, {1, 0}, {1, 0}};
     public int row;
     public int columns;
+
+    private int gX, gY;
 
     private void make_new() {
         int numbermas = (int) (Math.random() * 7);
@@ -47,7 +48,9 @@ public class Game {
             for (int i = gY; i < row; i++) {
                 System.arraycopy(mass[i], 0, mas[i], gX, columns);
             }
-        } else endg = true;
+        } else {
+            endg = true;
+        }
     }
 
     public void start() {
@@ -56,9 +59,7 @@ public class Game {
                 mas[i][j] = 0;
             }
         }
-			/*for (int i = 0; i < 20; i++) {
-				mas[29][i]=-1;
-			}*/
+
         kol = 0;
         make_new();
         endg = false;
@@ -71,10 +72,15 @@ public class Game {
             if ((gY + row) < 30) {
                 for (int i = 0; i < row; i++) {
                     for (int j = 0; j < columns; j++) {
-                        if ((mas[gY + i][gX + j] == 1) && (mas[gY + i + 1][gX + j] > 1)) fprov = false;
+                        if ((mas[gY + i][gX + j] == 1) && (mas[gY + i + 1][gX + j] > 1)) {
+                            fprov = false;
+                        }
                     }
                 }
-                if (fprov) gY++;
+
+                if (fprov) {
+                    gY++;
+                }
             } else {
                 gY = 30 - row;
                 fprov = false;
@@ -88,10 +94,15 @@ public class Game {
             if (gX - 1 >= 0) {
                 for (int i = 0; i < row; i++) {
                     for (int j = 0; j < columns; j++) {
-                        if ((mas[gY + i][gX + j] == 1) && (mas[gY + i][gX + j - 1] > 1)) prov = false;
+                        if ((mas[gY + i][gX + j] == 1) && (mas[gY + i][gX + j - 1] > 1)) {
+                            prov = false;
+                        }
                     }
                 }
-                if (prov) gX--;
+
+                if (prov) {
+                    gX--;
+                }
             }
         }
 
@@ -100,10 +111,14 @@ public class Game {
             if (gX + columns <= 19) {
                 for (int i = 0; i < row; i++) {
                     for (int j = 0; j < columns; j++) {
-                        if ((mas[gY + i][gX + j] == 1) && (mas[gY + i][gX + j + 1] > 1)) prov = false;
+                        if ((mas[gY + i][gX + j] == 1) && (mas[gY + i][gX + j + 1] > 1)) {
+                            prov = false;
+                        }
                     }
                 }
-                if (prov) gX++;
+                if (prov) {
+                    gX++;
+                }
             }
         }
 
@@ -112,11 +127,15 @@ public class Game {
             if (gY < 26 - row) {
                 for (int i = 0; i < row; i++) {
                     for (int j = 0; j < columns; j++) {
-                        if ((mas[gY + i][gX + j] == 1) && ((mas[gY + i + 3][gX + j] > 1) || (mas[gY + i + 2][gX + j] > 1) || (mas[gY + i + 1][gX + j] > 1)))
+                        if ((mas[gY + i][gX + j] == 1) && ((mas[gY + i + 3][gX + j] > 1) || (mas[gY + i + 2][gX + j] > 1) || (mas[gY + i + 1][gX + j] > 1))) {
                             prov = false;
+                        }
                     }
                 }
-                if (prov) gY += 3;
+
+                if (prov) {
+                    gY += 3;
+                }
             }
         }
 
@@ -125,32 +144,38 @@ public class Game {
             if ((gY < 30 - columns) && (gX < 20 - row)) {
                 for (int i = gY; i < gY + columns; i++) {
                     for (int j = gX; j < gX + row; j++) {
-                        if (mas[i][j] > 1) fpovorot = false;
+                        if (mas[i][j] > 1) {
+                            fpovorot = false;
+                        }
                     }
                 }
-            } else fpovorot = false;
+            } else {
+                fpovorot = false;
+            }
 
             if (fpovorot) {
                 int[][] masp = new int[columns][row];
+
                 for (int i = 0; i < row; i++) {
                     for (int j = 0; j < columns; j++) {
                         masp[j][i] = mass[i][j];
                     }
                 }
+
                 mass = masp;
                 row = mass.length;
                 columns = mass[0].length;
+
                 for (int i = 0; i < row; i++) {
                     for (int j = 0; j < columns / 2; j++) {
-                        //mass[i][j] = masp[i][columns-j-1];
                         int t = mass[i][j];
                         mass[i][j] = mass[i][columns - j - 1];
                         mass[i][columns - j - 1] = t;
-
                     }
                 }
             }
         }
+
         napr = 0;
         return fprov;
     }
@@ -168,7 +193,9 @@ public class Game {
             }
             for (int i = gY; i < gY + row; i++) {
                 for (int j = gX; j < gX + columns; j++) {
-                    if (mass[i - gY][j - gX] == 1) mas[i][j] = mass[i - gY][j - gX];
+                    if (mass[i - gY][j - gX] == 1) {
+                        mas[i][j] = mass[i - gY][j - gX];
+                    }
                 }
             }
         }
@@ -183,7 +210,9 @@ public class Game {
             }
             for (int i = gY; i < gY + row; i++) {
                 for (int j = gX; j < gX + columns; j++) {
-                    if (mass[i - gY][j - gX] == 1) mas[i][j] = mass[i - gY][j - gX];
+                    if (mass[i - gY][j - gX] == 1) {
+                        mas[i][j] = mass[i - gY][j - gX];
+                    }
                 }
             }
 
@@ -215,11 +244,14 @@ public class Game {
                         for (int k = i; k >= 1; k--) {
                             mas[k][j] = mas[k - 1][j];
                         }
+
                         mas[0][j] = 0;
                     }
+
                     kol += 50;
                 }
             }
+
             kol += 10;
             make_new();
         }

@@ -25,8 +25,11 @@ public class Panel extends JPanel {
             else if (key == KeyEvent.VK_DOWN) myGame.napr = 5;
         }
 
-        public void keyReleased(KeyEvent e) {}
-        public void keyTyped(KeyEvent e) {}
+        public void keyReleased(KeyEvent e) {
+        }
+
+        public void keyTyped(KeyEvent e) {
+        }
     }
 
     public Panel() {
@@ -127,9 +130,6 @@ public class Panel extends JPanel {
                     else if (myGame.mas[i][j] == 7) gr.drawImage(color6, 20 + j * 20, 10 + i * 20, 20, 20, null);
                     else if (myGame.mas[i][j] == 8) gr.drawImage(color7, 20 + j * 20, 10 + i * 20, 20, 20, null);
                 }
-                //gr.setColor(Color.YELLOW);
-                //gr.setFont(new Font("arial",0,22));
-                //gr.drawString(""+myGame.mas[i][j], 12+j*20, 30+i*20);
             }
         }
 
