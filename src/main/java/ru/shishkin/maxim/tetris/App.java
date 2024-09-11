@@ -1,6 +1,6 @@
-package ru.shishkin.tetris;
+package ru.shishkin.maxim.tetris;
 
-public class Application {
+public class App {
     public static void main(String[] args) {
         new Frame();
     }

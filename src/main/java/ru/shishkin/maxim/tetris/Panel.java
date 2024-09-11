@@ -1,4 +1,4 @@
-package ru.shishkin.tetris;
+package ru.shishkin.maxim.tetris;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

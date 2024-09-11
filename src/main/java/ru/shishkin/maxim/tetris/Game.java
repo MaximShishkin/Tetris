@@ -1,4 +1,4 @@
-package ru.shishkin.tetris;
+package ru.shishkin.maxim.tetris;
 
 public class Game {
     public int[][] mas = new int[30][20];
